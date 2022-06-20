@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap');
+@import 'scrollbar';
+
+$break: 700px;
+
+$pad: 34px;
+$rad: 5px;
+
+$bg-body: #e6eff5;
+$bg-A: #ffffff;
+$bg-B: #2ab3b1;
+$bg-C: #4bbfbd;
+
+$clr-primary: hsl(71, 73%, 54%);
+$clr-primary-hover: hsl(71, 73%, 64%);
+$clr-secondary: #2ab3b1;
+$clr-tertiary: hsl(0, 0%, 100%);
+$clr-fourthiary: #9aa7be;
+
+* {
+  box-sizing: border-box;
+  font-weight: 400;
+  margin: 0;
+}
+
+html {
+  font-family: 'Overpass', sans-serif;
+  line-height: 1.5;
+}
+
+$v-offset: 5px;
+$h-offset: 5px;
+$blur: 20px;
+$spread: 0px;
+$shadow-clr: rgba(0, 0, 0, 0.2);
+$shadow: $h-offset $v-offset $blur $spread $shadow-clr;
+$shadow-hover: $h-offset $v-offset calc(#{$blur} * 2) $spread $shadow-clr;
+
+.shadow {
+  box-shadow: $shadow;
+}
+
+body {
+  margin: 0;
+  padding: 16% 8%;
+
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  align-items: center;
+  background: $bg-body;
+
+  #root {
+    min-width: 100%;
+    min-height: 100%;
+
+    .card {
+      margin: 0 auto;
+      min-width: 260px; // smallest "common" screen size is iphone-5 (320px)
+      max-width: 650px;
+      border-radius: $rad;
+      overflow: hidden;
+
+      display: grid;
+
+      @media (max-width: #{$break}) {
+        // x <= $break
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          'A'
+          'B'
+          'C';
+      }
+      @media (min-width: calc(#{$break} + 1px)) {
+        // $break < x
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas:
+          'A A'
+          'B C';
+      }
+
+      .A,
+      .B,
+      .C {
+        height: 100%;
+        width: 100%;
+        padding: $pad;
+
+        h2 {
+          margin-bottom: 10px;
+        }
+      }
+
+      .B,
+      .C {
+        color: $clr-tertiary;
+      }
+
+      .A {
+        background: $bg-A;
+        grid-area: A;
+        h2 {
+          color: $clr-secondary;
+        }
+
+        h3 {
+          color: $clr-primary;
+          margin-bottom: 5px;
+        }
+
+        p {
+          color: $clr-fourthiary;
+        }
+      }
+      .B {
+        background: $bg-B;
+        grid-area: B;
+
+        h3 {
+          font-size: 1rem;
+        }
+
+        h4 {
+          // margin-bottom: 10px;
+          font-size: 1.8rem;
+
+          position: relative;
+          &::after {
+            content: 'per month';
+            opacity: 0.5;
+            position: absolute;
+            top: 0;
+            transform: translateX(15px);
+            font-size: 1rem;
+          }
+        }
+
+        h3 {
+          margin-bottom: 30px;
+        }
+
+        .button {
+          background: $clr-primary;
+          width: fit-content;
+          padding: 10px;
+          border-radius: $rad;
+          width: 100%;
+          text-align: center;
+          cursor: pointer;
+
+          transition: all 0.2s ease;
+          &:hover {
+            background: $clr-primary-hover;
+            transform: scale(1.01);
+            box-shadow: $shadow-hover;
+          }
+        }
+      }
+      .C {
+        background: $bg-C;
+        grid-area: C;
+
+        ul {
+          list-style: none;
+          padding-left: 0;
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}
