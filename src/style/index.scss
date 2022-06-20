@@ -2,15 +2,12 @@
 @import 'scrollbar';
 
 $break: 700px;
-
 $pad: 34px;
 $rad: 5px;
-
 $bg-body: #e6eff5;
 $bg-A: #ffffff;
 $bg-B: #2ab3b1;
 $bg-C: #4bbfbd;
-
 $clr-primary: hsl(71, 73%, 54%);
 $clr-primary-hover: hsl(71, 73%, 64%);
 $clr-secondary: #2ab3b1;
@@ -26,6 +23,13 @@ $clr-fourthiary: #9aa7be;
 html {
   font-family: 'Overpass', sans-serif;
   line-height: 1.5;
+}
+
+h2 {
+  font-size: 1.45rem;
+}
+h3 {
+  font-size: 1rem;
 }
 
 $v-offset: 5px;
@@ -116,12 +120,7 @@ body {
         background: $bg-B;
         grid-area: B;
 
-        h3 {
-          font-size: 1rem;
-        }
-
         h4 {
-          // margin-bottom: 10px;
           font-size: 1.8rem;
 
           position: relative;
@@ -142,11 +141,13 @@ body {
         .button {
           background: $clr-primary;
           width: fit-content;
-          padding: 10px;
+          padding: 20px;
           border-radius: $rad;
           width: 100%;
           text-align: center;
           cursor: pointer;
+          border: none;
+          color: inherit;
 
           transition: all 0.2s ease;
           &:hover {
@@ -163,7 +164,7 @@ body {
         ul {
           list-style: none;
           padding-left: 0;
-          font-size: 0.8rem;
+          font-size: 0.85rem;
         }
       }
     }

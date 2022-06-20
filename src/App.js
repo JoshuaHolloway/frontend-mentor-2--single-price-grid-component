@@ -21,7 +21,9 @@ export default function App() {
 
         <h3>Full access for less than &#36;1 a day</h3>
 
-        <div className='button shadow'>Sign Up</div>
+        <div className='button shadow' onClick={() => alert('TODO: handle')}>
+          Sign Up
+        </div>
       </div>
       <div className='C'>
         <h2>Why Us</h2>
